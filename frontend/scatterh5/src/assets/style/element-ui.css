@@ -1,1 +1,13 @@
 @charset "utf-8";
+.el-table .cell{
+    text-align: center;
+}
+.el-menu-item.is-active{
+    border-right: 2px solid #1890FF;
+}
+.transfer .el-form-item__content,.limitWhite .el-form-item__content{
+    text-align: right;
+}
+.el-tabs--border-card>.el-tabs__content{
+    padding: 60px 15px 120px 15px !important;
+}

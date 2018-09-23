@@ -5,8 +5,7 @@
         <div class="headBox">
           <div class="tokenName">TokenShields</div>
           <div class="userName">
-            <img src="" alt="">
-            Fannie
+            <img src="../assets/images/logo.png" alt="" class="imgBox">
           </div>
         </div>
       </el-header>
@@ -25,14 +24,16 @@ export default {
   name: 'tokenIndex',
   data () {
     return {
-
+      accountsName: {},
     }
   },
   mounted () {
-    
+    this.geUsertName()
   },
   methods: {
-    
+    geUsertName () {
+      this.accountsName = sessionStorage.getItem('accountName')
+    }
   },
 }
 </script>
@@ -40,6 +41,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 .tokenIndex{
+  .imgBox{
+    width: 40px;
+  }
   .el-header, .el-footer {
     background: #597EF7;
     height: 65px;
@@ -48,7 +52,6 @@ export default {
   
   .el-main {
     background: #F0F2F5;
-    text-align: center;
   }
   
   body > .el-container {
@@ -70,6 +73,9 @@ export default {
       font-family: PingFangSC-Regular;
       font-size: 14px;
       color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

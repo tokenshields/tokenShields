@@ -7,23 +7,7 @@ export default new Router({
   routes: [
     {
       path: "/",
-      redirect: "/index"
-    },
-    {
-      path: '/login',
-      component: resolve => require(['../components/login.vue'], resolve)
-    },
-    {
-      path: '/index',
-      component: resolve => require(['../components/index.vue'], resolve)
-    },
-    {
-      path: '/send',
-      component: resolve => require(['../components/send.vue'], resolve)
-    },
-    {
-      path: '/setlimt',
-      component: resolve => require(['../components/setlimt.vue'], resolve)
+      redirect: "/tokenIndex"
     },
     {
       path: '/tokenIndex',
@@ -36,6 +20,24 @@ export default new Router({
         {
           path: 'sidebox',
           component: resolve => require(['@/components/sidebox.vue'], resolve),
+          children: [
+            {
+              path: '/',
+              redirect: 'account'
+            },
+            {
+              path: 'account',
+              component: resolve => require(['@/components/account.vue'], resolve),
+            },
+            {
+              path: 'transfer',
+              component: resolve => require(['@/components/transfer.vue'], resolve),
+            },
+            {
+              path: 'limitWhite',
+              component: resolve => require(['@/components/limitWhite.vue'], resolve),
+            },
+          ]
         },
       ]
     },
