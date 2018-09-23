@@ -1,0 +1,147 @@
+{
+   "version": "eosio::abi/1.0",
+   "types": [{
+      "new_type_name": "account_name",
+      "type": "name"
+   }],
+  "structs": [
+     {
+      "name": "transfer",
+      "base": "",
+      "fields": [
+        {"name":"from", "type":"account_name"},
+        {"name":"to", "type":"account_name"},
+        {"name":"quantity", "type":"asset"},
+        {"name":"memo", "type":"string"}
+      ]
+    },{
+     "name": "create",
+     "base": "",
+     "fields": [
+        {"name":"issuer", "type":"account_name"},
+        {"name":"maximum_supply", "type":"asset"}
+     ]
+  },{
+     "name": "issue",
+     "base": "",
+     "fields": [
+        {"name":"to", "type":"account_name"},
+        {"name":"quantity", "type":"asset"},
+        {"name":"memo", "type":"string"}
+     ]
+  },{
+      "name": "transrecord",
+      "base": "",
+      "fields": [{
+          "name": "transtime",
+          "type": "uint32"
+        },{
+          "name": "quantity",
+          "type": "asset"
+        }
+      ]
+    },{
+      "name": "account",
+      "base": "",
+      "fields": [
+        {"name":"balance", "type":"asset"},
+        {"name":"latesttransrec", "type":"transrecord[]"},
+        {"name":"limittrans", "type":"asset"},
+        {"name":"limitime", "type":"uint32"},
+        {"name":"whitelist", "type":"account_name[]"}
+      ]
+    },{
+      "name": "currency_stats",
+      "base": "",
+      "fields": [
+        {"name":"supply", "type":"asset"},
+        {"name":"max_supply", "type":"asset"},
+        {"name":"issuer", "type":"account_name"}
+      ]
+    },{
+    "name": "setlimit",
+    "base": "",
+    "fields": [{
+        "name": "account",
+        "type": "name"
+      },{
+        "name": "quantitylim",
+        "type": "asset"
+      },{
+        "name": "period",
+        "type": "uint32"
+      }
+    ]
+  },{
+    "name": "addwhitelist",
+    "base": "",
+    "fields": [{
+        "name": "account",
+        "type": "name"
+      },{
+        "name": "symbol",
+        "type": "asset"
+      },{
+        "name": "white",
+        "type": "name"
+      }
+    ]
+  },{
+    "name": "rmwhitelist",
+    "base": "",
+    "fields": [{
+        "name": "account",
+        "type": "name"
+      },{
+        "name": "symbol",
+        "type": "asset"
+      },{
+        "name": "white",
+        "type": "name"
+      }
+    ]
+  }
+  ],
+  "actions": [{
+      "name": "transfer",
+      "type": "transfer",
+      "ricardian_contract": ""
+    },{
+      "name": "issue",
+      "type": "issue",
+      "ricardian_contract": ""
+    }, {
+      "name": "create",
+      "type": "create",
+      "ricardian_contract": ""
+    },{
+    "name": "setlimit",
+    "type": "setlimit",
+    "ricardian_contract": ""
+    },{
+    "name": "addwhitelist",
+    "type": "addwhitelist",
+    "ricardian_contract": ""
+    },{
+    "name": "rmwhitelist",
+    "type": "rmwhitelist",
+    "ricardian_contract": ""
+    }
+  ],
+  "tables": [{
+      "name": "accounts",
+      "type": "account",
+      "index_type": "i64",
+      "key_names" : ["currency"],
+      "key_types" : ["uint64"]
+    },{
+      "name": "stat",
+      "type": "currency_stats",
+      "index_type": "i64",
+      "key_names" : ["currency"],
+      "key_types" : ["uint64"]
+    }
+  ],
+  "ricardian_clauses": [],
+  "abi_extensions": []
+}
